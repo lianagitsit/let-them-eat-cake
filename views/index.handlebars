@@ -1,0 +1,27 @@
+<h1>Let Them Eat Cake</h1>
+
+<form class="cake-form">
+    <div class="form-group">
+        <label for="cake">Cake:</label>
+        <input type="text" id="cake" name="cake-name">
+    </div>
+    <button type="submit">Submit</button>
+</form>
+
+<h3>Cakes to Eat</h3>
+<ul id="cakes-to-eat">
+    {{#each cakes}}
+        {{#unless eaten}}
+            <li>{{id}}. {{cake_name}} <button class="eat-it" data-id="{{id}}">Eat It</button></li>
+        {{/unless}}
+    {{/each}}
+</ul>
+
+<h3>Eaten Cakes</h3>
+<ul id="eaten-cakes">
+    {{#each cakes}}
+        {{#if eaten}}
+            <li>{{cake_name}}</li>
+        {{/if}}
+    {{/each}}
+</ul>
