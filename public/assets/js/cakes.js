@@ -23,11 +23,23 @@ $(function(){
         }
         console.log(id);
         
-        $.ajax("/api/cats/" + id, {
+        $.ajax("/api/cakes/" + id, {
             type: "PUT",
             data: newCakeState
         }).then( () => {
             location.reload();
         })
+    });
+
+    $(document).on("click", ".delete-it", event => {
+        var id = event.target.dataset.id;
+        console.log(id);
+        
+        $.ajax("/api/cakes/" + id, {
+            type: "DELETE",
+        }).then( () => {
+            location.reload();
+        })
     })
+
 })

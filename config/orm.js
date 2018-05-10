@@ -38,7 +38,7 @@ var orm = {
 
     insertOne: function (tableName, cols, vals, cb) {
         // "INSERT INTO cakes(name, eaten) VALUES("Chocolate", false);"
-        var queryString = "INSERT INTO " + tableName + "(" + cols.toString() + ") VALUES(" + printQuestionMarks(vals.length) + ")";
+        var queryString = "INSERT INTO " + tableName + "(" + cols.toString() + ") VALUES(" + printQuestionMarks(vals.length) + ");";
 
         connection.query(queryString, vals, (err, result) => {
             if (err) throw err;
@@ -47,7 +47,16 @@ var orm = {
     },
 
     updateOne: function (tableName, objColVals, condition, cb) {
-        var queryString = "UPDATE " + tableName + " SET " + objToSql(objColVals) + " WHERE " + condition;
+        var queryString = "UPDATE " + tableName + " SET " + objToSql(objColVals) + " WHERE " + condition + ";";
+
+        connection.query(queryString, (err, result) => {
+            if (err) throw err;
+            cb(result);
+        })
+    },
+
+    deleteOne: function(tableName, condition, cb){
+        var queryString = "DELETE FROM " + tableName + " WHERE " + condition + ";";
 
         connection.query(queryString, (err, result) => {
             if (err) throw err;

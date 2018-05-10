@@ -17,6 +17,12 @@ var cake = {
         orm.updateOne("cakes", objColVals, condition, res => {
             cb(res);
         })
+    },
+
+    deleteOne: function(condition, cb){
+        orm.deleteOne("cakes", condition, res => {
+            cb(res);
+        })
     }
 }
 

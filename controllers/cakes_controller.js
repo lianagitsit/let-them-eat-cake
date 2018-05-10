@@ -18,13 +18,25 @@ router.post("/api/cakes", (req, res) => {
     });
 });
 
-router.put("/api/cats/:id", (req, res) => {
+router.put("/api/cakes/:id", (req, res) => {
     var condition = "id = " + req.params.id;
 
     cake.updateOne({
         eaten: req.body.eaten
     }, condition, result => {
         if (result.changedRows === 0){
+            return res.status(404).end();
+        } else {
+            res.status(200).end();
+        }
+    })
+});
+
+router.delete("/api/cakes/:id", (req, res) => {
+    var condition = "id = " + req.params.id;
+
+    cake.deleteOne(condition, result => {
+        if (result.affectedRows === 0){
             return res.status(404).end();
         } else {
             res.status(200).end();

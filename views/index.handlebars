@@ -12,7 +12,11 @@
 <ul id="cakes-to-eat">
     {{#each cakes}}
         {{#unless eaten}}
-            <li>{{id}}. {{cake_name}} <button class="eat-it" data-id="{{id}}">Eat It</button></li>
+            <li>
+                {{cake_name}} 
+                <button class="eat-it" data-id="{{id}}">Eat It</button>
+                <button class="delete-it" data-id="{{id}}">Delete</button>
+            </li>
         {{/unless}}
     {{/each}}
 </ul>
@@ -21,7 +25,10 @@
 <ul id="eaten-cakes">
     {{#each cakes}}
         {{#if eaten}}
-            <li>{{cake_name}}</li>
+            <li>
+                {{cake_name}}
+                <button class="delete-it" data-id="{{id}}">Delete</button>
+            </li>
         {{/if}}
     {{/each}}
 </ul>
