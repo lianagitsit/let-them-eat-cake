@@ -1,34 +1,43 @@
-<h1>Let Them Eat Cake</h1>
+<div class="jumbotron text-center">
+    <h1>Let Them Eat Cake</h1>
+</div>
 
-<form class="cake-form">
-    <div class="form-group">
-        <label for="cake">Cake:</label>
-        <input type="text" id="cake" name="cake-name">
+<div class="container">
+    <div class="row text-center">
+        <form class="cake-form">
+            <div class="form-group">
+                <label for="cake">Cake:</label>
+                <input type="text" id="cake" name="cake-name">
+            </div>
+            <button class="btn btn-info" type="submit">Submit</button>
+        </form>
     </div>
-    <button type="submit">Submit</button>
-</form>
 
-<h3>Cakes to Eat</h3>
-<ul id="cakes-to-eat">
-    {{#each cakes}}
-        {{#unless eaten}}
-            <li>
-                {{cake_name}} 
-                <button class="eat-it" data-id="{{id}}">Eat It</button>
-                <button class="delete-it" data-id="{{id}}">Delete</button>
-            </li>
-        {{/unless}}
-    {{/each}}
-</ul>
+    <div class="row text-center">
+        <div class="col-md-6">
+            <h3>Cakes to Eat</h3>
+            <ul id="cakes-to-eat">
+                {{#each cakes}} {{#unless eaten}}
+                <li>
+                    {{cake_name}}
+                    <button class="btn btn-xs btn-success eat-it" data-id="{{id}}">Eat</button>
+                    <button class="btn btn-xs btn-danger delete-it" data-id="{{id}}">Delete</button>
+                </li>
+                {{/unless}} {{/each}}
+            </ul>
+        </div>
 
-<h3>Eaten Cakes</h3>
-<ul id="eaten-cakes">
-    {{#each cakes}}
-        {{#if eaten}}
-            <li>
-                {{cake_name}}
-                <button class="delete-it" data-id="{{id}}">Delete</button>
-            </li>
-        {{/if}}
-    {{/each}}
-</ul>
+        <div class="col-md-6">
+            <h3>Eaten Cakes</h3>
+            <ul id="eaten-cakes">
+                {{#each cakes}} {{#if eaten}}
+                <li>
+                    {{cake_name}}
+                    <button class="btn btn-xs btn-danger delete-it" data-id="{{id}}">Delete</button>
+                </li>
+                {{/if}} {{/each}}
+            </ul>
+        </div>
+    </div>
+
+</div>
